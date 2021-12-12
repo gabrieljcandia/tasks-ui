@@ -6,9 +6,6 @@ import App from './App';
 import { store } from './data/store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
-import {getTasks} from "./data/taskSlice";
-
-store.dispatch(getTasks());
 
 ReactDOM.render(
   <React.StrictMode>

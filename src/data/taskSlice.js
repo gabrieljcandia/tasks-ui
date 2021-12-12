@@ -8,8 +8,8 @@ const initialState = {
 
 export const getTasks = createAsyncThunk(
   'task/getTasks',
-  async () => {
-    return await getByAmount({quantity: 3});
+  async ({quantity}) => {
+    return await getByAmount({quantity});
   }
 )
 

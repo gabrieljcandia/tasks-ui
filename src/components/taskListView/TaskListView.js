@@ -3,12 +3,14 @@ import React from "react";
 import Task from "../task/Task";
 import {useSelector} from "react-redux";
 import {selectTasks} from "../../data/taskSlice";
+import TaskQuery from "../taskQuery/TaskQuery";
 
 const TaskListView = () => {
   const tasks = useSelector(selectTasks);
 
   return (
     <Container>
+      <TaskQuery/>
       <Row>
         {tasks.map(task => (
           <Task
