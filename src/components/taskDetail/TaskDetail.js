@@ -8,7 +8,7 @@ const TaskDetail = () => {
   const selectedTask = useSelector(selectCurrentTask);
 
   const showModal = selectedTask !== null;
-  const taskStatus = selectedTask?.status === true ? 'completed' : 'pendant';
+  const taskStatus = selectedTask?.completed === true ? 'completed' : 'pendant';
 
   const handleClose = () => dispatch(unselectTask());
   const handleComplete = () => {
@@ -32,7 +32,7 @@ const TaskDetail = () => {
           </Modal.Body>
 
           <Modal.Footer>
-            <Button variant="primary" onClick={handleComplete}>
+            <Button variant="primary" disabled={selectedTask.completed} onClick={handleComplete}>
               Complete
             </Button>
             <Button variant="secondary" onClick={handleClose}>
