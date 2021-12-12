@@ -7,10 +7,35 @@ import TaskQuery from "../taskQuery/TaskQuery";
 
 const TaskListView = () => {
   const tasks = useSelector(selectTasks);
+  const completedTasks = tasks.filter(task => task.completed);
+  const pendantTasks = tasks.filter(task => !task.completed);
 
   return (
     <Container>
       <TaskQuery/>
+
+      <TaskList
+        tasks={pendantTasks}
+        title={'Pendant tasks'}
+      />
+
+      <TaskList
+        tasks={completedTasks}
+        title={'Completed tasks'}
+      />
+    </Container>
+  );
+}
+
+const TaskList = ({title, tasks}) => {
+  return (
+    <div>
+      <Row>
+        <span>
+          {title}
+        </span>
+      </Row>
+
       <Row>
         {tasks.map(task => (
           <Task
@@ -21,7 +46,7 @@ const TaskListView = () => {
           />
         ))}
       </Row>
-    </Container>
+    </div>
   );
 }
 
