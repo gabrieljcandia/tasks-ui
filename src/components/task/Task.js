@@ -1,16 +1,21 @@
 import {Col} from "react-bootstrap";
 import {useDispatch} from "react-redux";
 import {selectTask} from "../../data/taskSlice";
+import styles from "./Task.module.css";
 
-const Task = ({uuid, title, completed}) => {
+const Task = ({uuid, title}) => {
   const dispatch = useDispatch();
-  const completedText = completed === true ? 'Completed' : 'Pendant';
 
   return (
     <Col sm={6}>
-      <span onClick={() => dispatch(selectTask(uuid))}>
-        Task #{uuid} {title} - {completedText}
-      </span>
+      <div className={styles.task} onClick={() => dispatch(selectTask(uuid))}>
+        <p className={styles.title}>
+          Task #{uuid}
+        </p>
+        <p className={styles.body}>
+          {title}
+        </p>
+      </div>
     </Col>
   );
 }
