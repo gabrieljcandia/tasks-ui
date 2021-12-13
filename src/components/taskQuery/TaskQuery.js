@@ -9,7 +9,10 @@ const TaskQuery = () => {
   const dispatch = useDispatch();
 
   const handleTaskCountChange = (e) => setTaskCount(parseInt(e.target.value));
-  const handleShowTasks = () => dispatch(getTasks({quantity: taskCount}))
+  const handleShowTasks = (e) => {
+    e.preventDefault();
+    dispatch(getTasks({quantity: taskCount}));
+  }
 
   return (
     <Form className={styles.taskQuery}>
@@ -24,7 +27,7 @@ const TaskQuery = () => {
           </Col>
         </Form.Group>
 
-        <Button onClick={handleShowTasks}>
+        <Button type="submit" onClick={handleShowTasks}>
           Show tasks
         </Button>
 
