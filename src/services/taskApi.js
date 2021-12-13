@@ -6,7 +6,4 @@ export const getByAmount = ({quantity}) => {
 
 export const editOne = ({uuid, title, completed}) => {
   return taskApiConfig.put(`/tasks`, {uuid, title, completed})
-    .then(() => {
-      return {uuid, title, completed};
-    })
 }
